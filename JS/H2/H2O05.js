@@ -20,7 +20,7 @@ function setup() {
 function draw() {
   background(brug);
   tekenRaster();
-  Image(spriteJos,xJos,yJos);
+  image(spriteJos,xJos,yJos);
 }
 
 function tekenRaster() {
