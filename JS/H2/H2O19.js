@@ -11,12 +11,12 @@ var yJos = 300;
 
 var raster = {
     aantalRijen:6,
-    aantalKolommen:6,
+    aantalKolommen:9,
     celGrootte:null,
     
     berekenCelGrootte() {
         this.celGrootte =
-        width/this.aantalKolommen;
+        canvas.width/this.aantalKolommen;
     },
     teken() {
         push();
@@ -39,6 +39,8 @@ function preload() {
     animatie.push(frame);
   }
 }
+
+var canvas;
 
 function setup() {
   canvas = createCanvas(900,600);
