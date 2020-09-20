@@ -73,4 +73,12 @@ function draw() {
   // voeg hier de if-else in
   
   jos.teken(mouseX,mouseY);
+  if(jos.isVlakbij(vuur) == true) {
+      jos.kleur = 'red';
+    
+    }
+    else {
+        jos.kleur = 'salmon';
+    }
+        
 }

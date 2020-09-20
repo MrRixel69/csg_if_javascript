@@ -1,10 +1,10 @@
 var raster = {
-  aantalRijen: 6,
-  aantalKolommen: 9,
+  aantalRijen: 6*3,
+  aantalKolommen: 9*3,
   celGrootte: null,
   
   berekenCelGrootte() {
-    this.celGrootte = width / this.aantalKolommen;
+    this.celGrootte = width / this.aantalKolommen; // 900/9  =  10
   },
   teken() {
     push();
@@ -29,7 +29,7 @@ var jos = {
 
   beweeg() {
     if (keyIsDown(LEFT_ARROW)) {
-      this.x -= raster.celGrootte;
+      this.x -= this.stapGrootte/2;
       this.frameNummer = 2;
     }
     if (keyIsDown(RIGHT_ARROW)) {
@@ -75,4 +75,5 @@ function draw() {
   raster.teken();
   jos.beweeg();
   jos.toon();
+  text(jos.animatie[3].width,5,15);
 }
