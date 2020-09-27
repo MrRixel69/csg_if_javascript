@@ -1,17 +1,18 @@
-var raster = {
-  aantalRijen: 6,
-  aantalKolommen: 9,
-  celGrootte: null,
-  
+class Raster {
+ constructor(r,k) {
+  this.aantalRijen = r;
+  this.aantalKolommen = k;
+  this.celGrootte = null;
+ }
   berekenCelGrootte() {
     this.celGrootte = canvas.width/this.aantalKolommen;
-  },
+  }
   teken() {
     push();
     noFill();
     stroke('grey');
-    for (rij=0;rij<this.aantalRijen;rij++) {
-      for (kolom=0;kolom<this.aantalKolommen;kolom++) {
+    for (var rij=0;rij<this.aantalRijen;rij++) {
+      for (var kolom=0;kolom<this.aantalKolommen;kolom++) {
         rect(kolom*this.celGrootte,rij*this.celGrootte,this.celGrootte,this.celGrootte);
       }
     }
@@ -100,6 +101,7 @@ function setup() {
   frameRate(10);
   textFont("Verdana");
   textSize(90);
+  raster = new Raster(6,9);
   raster.berekenCelGrootte();
   
   eve = new Jos();
@@ -110,9 +112,11 @@ function setup() {
   }
   
   alice = new Vijand(700,200);
+  bob = new Vijand(400,500);
   alice.stapGrootte = 1*eve.stapGrootte;
+  bob.stapGrootte = 1*eve.stapGrootte;
   alice.sprite = loadImage("images/sprites/Alice100px/Alice.png");
-  
+  bob.sprite = loadImage("images/sprites/Bob100px/Bob.png");
 }
 
 function draw() {
@@ -120,10 +124,12 @@ function draw() {
   raster.teken();
   eve.beweeg();
   alice.beweeg();
+  bob.beweeg();
   eve.toon();
   alice.toon();
+  bob.toon();
   
-  if (eve.wordtGeraakt(alice)) {
+  if (eve.wordtGeraakt(alice) || eve.wordtGeraakt(bob)) {
     noLoop();
   }
   
