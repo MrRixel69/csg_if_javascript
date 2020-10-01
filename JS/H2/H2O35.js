@@ -100,7 +100,7 @@ function preload() {
 function setup() {
   canvas = createCanvas(900,600);
   canvas.parent('processing');
-  frameRate(10);
+  frameRate(60);
   textFont("Verdana");
   textSize(90);
   
@@ -133,7 +133,7 @@ function draw() {
   else {
     alice.beweeg();
     bob.beweeg();
-    //
+    eve.aanDeBeurt = true;
   }
 
   if (alice.x == bob.x && alice == bob.y) {
